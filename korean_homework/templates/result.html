@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width", initial-scale="1">
+	<title>형태소 분석 웹사이트</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+</head>
+<body>
+	<!--css(적어서 index안에 넣음ㅎ)-->
+	<style type="text/css">
+		.topic {
+			color: #FA8258;
+			font-weight: bold;
+		}
+		.container-fluid {
+			background-color: #E6E6E6;
+			vertical-align: text-top;
+		}
+		.form-control {
+			height: 80px;
+			text-align: center;
+			font-size: 30px;
+			border: 5px solid #F68888;
+		}
+		#search {
+			border: 5px solid #F68888;
+			background-color: #F68888;
+			font-weight: bold;
+		}
+		.search-result {
+			border-bottom: 5px dotted #707070;
+			margin-top: 20px;
+			margin-left: 550px;
+			margin-right: 600px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.topic {
+			text-align: center;
+		}
+		.footer {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.row {
+			color: black;
+		}
+	</style>
+	<!--nav로 된 거 맨 위에 제목 바 -->
+	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="/"><p class="topic">♥ 형태소 분석 ♥</p></a>
+    		</div>
+  		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
+	<!-- form으로 되어 있는 거 제목창 -->
+	<br>
+	<form action = "http://localhost:5000/result" method = "POST" class="navbar-form" navbar-left>
+		<div class="form-group">
+			<input name="textbox" type="text" class="form-control" placeholder="문장을 입력하세요">
+			<br>
+			<br>
+			<button name="button" type="submit" class="btn btn-default" id="search" style="width: 50%; height: 50%;"><img src="{{url_for('static', filename='images/zoom.png')}}" style="width: 25%; height: 25%;"><div style="width:100%; height: 100%;">분석하기</div></button>
+		</div>
+	</form>
+	</center>
+	<div class="search-result">분석 결과</div>
+
+	<center>
+		{% autoescape false %}
+		<p><h1>[{{ f }}]</h1></p>
+    <p><h1>{{ d }}</h1></p>
+		{% endautoescape %}
+	</center>
+	<div class="footer">
+		<footer style="background-color: #E6E6E6; color: #ffffff">
+			<div class="container">
+				<br>
+				<div class="row">
+					<div class="col-sm-4" style="text-align: center;"><h3>copyright &copy; 2021</h3></div>
+					<br>
+					<div class="col-sm-4"><p>문장의 형태소마다 각자 무슨 역할을 하는지 자세하게 파악한 후 파이썬을 활용하여 문장의 형태소를 분석해봤습니다.</p></div>
+					<div class="col-sm-4"><h4 style="text-align:center;"><span class="glyphicon glyphicon-triangle-top"></span>&nbsp;by 김도영, 김영준, 임병우</h4></div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
